@@ -13,7 +13,17 @@
   margin: 0px;
   background-color: aqua;
 }
+.nav-right{
+  text-align: right;
+}
+.logo{
+  width: 45px;
+  float: left;
+  border-radius: 50%;
+  margin-top: 3px;
+  margin-left: 20px;
 
+}
 .footer{
   position: absolute;
   text-align: center;
@@ -21,9 +31,24 @@
   width: 100%;
   background-color: skyblue;
 }
+.product-list{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.product-list ul li{
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  width: 150px;
+}
+
+.product-list ul {
+  margin: 0px;
+}
 
 
-.register
+.register, .product
 {
   margin-left: 30%;
 }
@@ -40,6 +65,13 @@
   width: 300px;
   border: 1px solide skyblue;
 
+}
+
+.invalid-input{
+  color: red;
+  margin-top: -20px;
+  display: block;
+  margin-left: 20px;
 }
 
 .AppButton{
