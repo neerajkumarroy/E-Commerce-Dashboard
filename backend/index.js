@@ -1,4 +1,4 @@
-require("./DB/config");
+require("./DB/config")
 const cors = require("cors");
 const express = require("express");
 const app = express();
@@ -47,23 +47,64 @@ app.post('/add-product', async (req, res) => {
     }
 });
 
-app.get("/products", async(req, resp) => {
+app.get("/products", async (req, resp) => {
     const product = await Products.find();
-    if (product.length>0) 
-    {
+    if (product.length > 0) {
         resp.send(product)
     }
-    else
-    {
-        resp.send({result:"Products Not Found.....!"})
+    else {
+        resp.send({ result: "Products Not Found.....!" })
     }
 })
 
-app.delete("/product/:id",async(req,resp)=>{
-   
-    const result = await Products.deleteOne({_id:req.params.id})
-    console.log(result);
+app.delete("/product/:id", async (req, resp) => {
+    console.log(req.params.id)
+    const result = await Products.deleteOne({ _id: req.params.id })
+    // console.log(result)
     resp.send(result);
+})
+
+//prefill Data
+app.get("/product/:id", async (req, resp) => {
+    let result = await Products.findOne({ _id: req.params.id })
+
+    if (result) {
+        resp.send(result)
+    }
+    else {
+        resp.send({ result: "Result is Not Found" })
+    }
+})
+
+// Update API
+
+app.put("/product/:id", async (req, resp) => {
+    let result = await Products.updateOne(
+
+        { _id: req.params.id },
+
+        {
+            $set: req.body
+        }
+    )
+    resp.send(result);
+})
+
+//Search Api
+
+app.get("/search/:key", async (req, resp) => {
+    let key = req.params.key;
+    let data = await Products.find(
+        {
+            "$or": [
+                { "name": { $regex: key } },
+                { "company": { $regex: key } }
+                // { "_id": key }
+                
+            ]
+        }
+    )
+    resp.send(data);
 })
 
 app.listen(PORT, () => {

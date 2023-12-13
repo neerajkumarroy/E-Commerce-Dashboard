@@ -82,6 +82,15 @@
   cursor: pointer;
 }
 
+.InputBox{
+  width: 350px;
+  margin-left: 20px;
+  height: 30px;
+  border: 1px solid skyblue;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
