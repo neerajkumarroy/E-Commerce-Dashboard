@@ -2,8 +2,8 @@ require("./DB/config")
 const cors = require("cors");
 const express = require("express");
 const app = express();
-const Employee = require("./DB/schema");
-const Products = require("./DB/products");
+const Employee = require("./models/schema.js");
+const Products = require("./models/products.js");
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json())

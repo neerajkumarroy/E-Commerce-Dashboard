@@ -1,2 +1,8 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://DEMO1:DEMO1@cluster0.1ufxrfa.mongodb.net/ecommerce");
+mongoose.connect(process.env.DB_URL)
+.then(()=>{
+    console.log("DataBase connect Succsfully..........!");
+}).catch((err)=>{
+    console.log(err);
+});
